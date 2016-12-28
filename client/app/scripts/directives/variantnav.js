@@ -9,10 +9,28 @@
 angular.module('clientApp')
   .directive('variantNav', function () {
     return {
-      template: '<div></div>',
+      templateUrl: '/partials/variantnav.html',
       restrict: 'E',
       link: function postLink(scope, element, attrs) {
-        element.text('this is the VariantNav directive');
+          scope.views = [
+	      'Assessment',
+	      'Detail',
+	      'Lab Observations',
+	      'Effect on Protein',
+	      'Treatments',
+	      'Reported Cases',
+	      'Somatic Frequency',
+	      'Other Labs',
+	      'Population Genetics',
+	      'Predictions',
+	      'Pathways',
+	      'Genome'
+	  ].map(function(name) {
+	      return {
+		  href: '#' + name.toLowerCase(),
+		  name: name
+	      }
+	  });
       }
     };
   });
