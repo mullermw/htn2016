@@ -29,18 +29,26 @@ angular
     'ngSanitize',
     'ngTouch',
     'ui.bootstrap',
-    'ui.router'
+    'ui.router',
+    'ncy-angular-breadcrumb'
   ]).
   config(function ($stateProvider) {
 	  $stateProvider.state({
       name: 'home',
       url: '/',
-      templateUrl: 'partials/home.html'
+      templateUrl: 'partials/home.html',
+      ncyBreadcrumb: {
+        label: 'Home'
+      }
     });
     $stateProvider.state({
       name: 'tests',
       url: '/tests',
       component: 'tests',
+      ncyBreadcrumb: {
+        label: 'Tests',
+        parent: 'home'
+      },
       resolve: {
         tests: function() {
           return fakeData.tests;
@@ -51,6 +59,10 @@ angular
       name: 'test',
       url: '/test/{testId}',
       component: 'test',
+      ncyBreadcrumb: {
+        label: '{{$ctrl.test.name}}',
+        parent: 'tests'
+      },
       resolve: {
         test: function($transition$) {
           var params = $transition$.params();
@@ -64,7 +76,14 @@ angular
       name: 'test.variants',
       url: '/variants',
       component: 'variants',
+      ncyBreadcrumb: {
+        label: 'Variants',
+        parent: 'test'
+      },
       resolve: {
+        test: function(test) {
+          return test;
+        },
         variants: function(test) {
           return test.variants;
         }
@@ -74,13 +93,20 @@ angular
       name: 'test.variant',
       url: '/variant/{variantId}',
       component: 'variant',
+      ncyBreadcrumb: {
+        label: '{{$ctrl.variant.name}}',
+        parent: 'test.variants'
+      },
       resolve: {
+        test: function(test) {
+          return test;
+        },
         variant: function(test, $stateParams) {
           return test.variants.find(function(variant) {
             return variant.id == $stateParams.variantId;
           });
         },
-        views: function(test, $stateParams) {
+        views: function() {
           return [
             'test.variant.assessment'
           ]
@@ -91,6 +117,9 @@ angular
       name: 'test.variant.assessment',
       url: '/assessment',
       component: 'assessment',
+      ncyBreadcrumb: {
+        label: 'Assessment'
+      },
       resolve: {
         variant: function(variant) {
           return variant;
@@ -100,6 +129,10 @@ angular
     $stateProvider.state({
       name: 'about',
       url: '/about',
-      templateUrl: 'partials/about.html'
+      templateUrl: 'partials/about.html',
+      ncyBreadcrumb: {
+        label: 'About',
+        parent: 'home'
+      }
     });
   });

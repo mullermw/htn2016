@@ -1,5 +1,6 @@
 angular.module('clientApp').component('variant', {
   bindings: {
+    test: '<',
     variant: '<',
     views: '<'
   },
