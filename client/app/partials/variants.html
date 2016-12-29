@@ -1,0 +1,8 @@
+<h1>Variants</h1>
+<ul>
+  <li ng-repeat="variant in $ctrl.variants">
+    <a ui-sref="test.variant({
+      variantId: variant.id
+    })">{{variant.name}}</a>
+  </li>
+</ul>

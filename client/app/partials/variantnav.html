@@ -1,8 +1,8 @@
 <div>
   <nav>
     <ul class="nav">
-      <li ng-repeat="view in views">
-	<a href="view.href">{{view.name}}</a>
+      <li ng-repeat="view in $ctrl.views">
+	      <a ui-sref="test.variant.view({name : view.id})">{{view.name}}</a>
       </li>
     </ul>
   </nav>

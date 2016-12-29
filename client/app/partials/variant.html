@@ -1,0 +1,8 @@
+<h1>Variant</h1>
+{{$ctrl.variant.name}}
+<ul>
+  <li ng-repeat="view in $ctrl.views">
+    <a ui-sref="{{view}}">{{view}}</a>
+  </li>
+</ul>
+<ui-view></ui-view>
