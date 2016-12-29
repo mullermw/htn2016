@@ -1,7 +1,7 @@
 <h1>Tests</h1>
 <ul>
   <li ng-repeat="test in $ctrl.tests">
-    <a ui-sref="test({ testId: test.id })">{{test.name}}</a>
+    <a ui-sref="test.variants({ testId: test.id })">{{test.name}}</a>
   </li>
 </ul>
 <ui-view></ui-view>

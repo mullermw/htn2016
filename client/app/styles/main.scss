@@ -3,7 +3,9 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 @import "bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
 // endbower
 @import 'bootstrap-overrides.scss';
+@import 'breadcrumb.scss';
 @import 'test.scss';
+@import 'variant.scss';
 
 .browsehappy {
   margin: 0.2em 0;
@@ -69,6 +71,9 @@ body {
 
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
+  .container {
+    padding: 0 0 0 5px;
+  }
 
   /* Remove the padding we set earlier */
   .header,

@@ -1,8 +1,55 @@
-<h1>Variant</h1>
-{{$ctrl.variant.name}}
-<ul>
-  <li ng-repeat="view in $ctrl.views">
-    <a ui-sref="{{view}}">{{view}}</a>
-  </li>
-</ul>
-<ui-view></ui-view>
+<div class="attributes">
+  <div>
+    <div>Gene</div>
+    <div>-</div>
+  </div>
+  <div>
+    <div>Variant</div>
+    <div>-</div>
+    <div>-</div>
+  </div>
+
+</div>
+<div class="attributes">
+  <div>
+    View
+    <div class="btn-group" uib-dropdown>
+      <button type="button" class="btn" uib-dropdown-toggle>
+        {{$ctrl.view}} <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu" uib-dropdown-menu role="menu">
+        <li role="menuitem" ng-repeat="view in $ctrl.views"><a href="#">{{view}}</a></li>
+      </ul>
+    </div>
+  </div>
+  <div>
+    Phenotype
+    <div class="btn-group" uib-dropdown>
+      <button type="button" class="btn" uib-dropdown-toggle>
+        Cancer <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu" uib-dropdown-menu role="menu">
+        <li role="menuitem"><a href="#">Cancer</a></li>
+        <li role="menuitem"><a href="#">non-small cell lung cancer</a></li>
+        <li role="menuitem"><a href="#">lung cancer</a></li>
+      </ul>
+    </div>
+  </div>
+  <div>
+    Isoform
+    <div class="btn-group" uib-dropdown>
+      <button type="button" class="btn" uib-dropdown-toggle>
+        NM_012345.1 <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu" uib-dropdown-menu role="menu">
+        <li role="menuitem"><a href="#">NM_012345.1</a></li>
+        <li role="menuitem"><a href="#">NM_012346.1</a></li>
+        <li role="menuitem"><a href="#">NM_012347.1</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+<div>
+  <ui-view></ui-view>
+</div>
+

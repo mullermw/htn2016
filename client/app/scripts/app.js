@@ -106,6 +106,9 @@ angular
             return variant.id == $stateParams.variantId;
           });
         },
+        view: function() {
+          return 'test.variant.assessment'
+        },
         views: function() {
           return [
             'test.variant.assessment'
