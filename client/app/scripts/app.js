@@ -13,6 +13,18 @@ var fakeData = {
     }
   ]
 };
+
+var variantViews = [
+  'Assessment',
+  'Treatment',
+  'Laboratory Observations'
+].map(function(viewName) {
+    return {
+      name: viewName,
+      uiSref: 'test.variant.' + viewName.replace(/ /, '').toLowerCase()
+    };
+  });
+
 /**
  * @ngdoc overview
  * @name clientApp
@@ -67,7 +79,7 @@ angular
         test: function($transition$) {
           var params = $transition$.params();
           return fakeData.tests.find(function(test) {
-            return test.id == params.testId;
+            return test.id === +params.testId;
           });
         }
       }
@@ -103,16 +115,14 @@ angular
         },
         variant: function(test, $stateParams) {
           return test.variants.find(function(variant) {
-            return variant.id == $stateParams.variantId;
+            return variant.id === +$stateParams.variantId;
           });
         },
         view: function() {
-          return 'test.variant.assessment'
+          return variantViews[0];
         },
         views: function() {
-          return [
-            'test.variant.assessment'
-          ]
+          return variantViews;
         }
       }
     });
@@ -122,6 +132,32 @@ angular
       component: 'assessment',
       ncyBreadcrumb: {
         label: 'Assessment'
+      },
+      resolve: {
+        variant: function(variant) {
+          return variant;
+        }
+      }
+    });
+    $stateProvider.state({
+      name: 'test.variant.treatment',
+      url: '/treatment',
+      component: 'treatment',
+      ncyBreadcrumb: {
+        label: 'Treatment'
+      },
+      resolve: {
+        variant: function(variant) {
+          return variant;
+        }
+      }
+    });
+    $stateProvider.state({
+      name: 'test.variant.laboratoryobservations',
+      url: '/laboratorypbservations',
+      component: 'laboratoryObservations',
+      ncyBreadcrumb: {
+        label: 'Laboratory Observations'
       },
       resolve: {
         variant: function(variant) {

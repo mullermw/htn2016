@@ -1,3 +1,4 @@
+'use strict';
 angular.module('clientApp').component('test', {
   bindings: {
     test: '<'
@@ -6,7 +7,7 @@ angular.module('clientApp').component('test', {
   controller: function() {
 
   },
-  $onChanges: function(changesObj) {
+  $onChanges: function(changedObj) {
     console.log(changedObj);
   }
 });
